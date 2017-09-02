@@ -2,6 +2,7 @@ package nnk.com.cwp11;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,8 +25,11 @@ public class NameActivity extends AppCompatActivity
 {
     TextView ex;
     public int n;
+    int trial;
     private ListView listView;
     private MyAdapter myAdapter;
+    public String str;
+    public Object ob;
 
 
     @Override
@@ -41,7 +46,26 @@ public class NameActivity extends AppCompatActivity
         listView.setItemsCanFocus(true);
         myAdapter=new MyAdapter(NameActivity.this,n);
         listView.setAdapter(myAdapter);
+        //ob=myAdapter.getItem(1);
 
+
+
+
+
+
+
+    }
+    public void createCol(View view)
+    {
+       ArrayList<String> al=new ArrayList<String>();
+        EditText et;
+        for (int i=0;i<listView.getCount();i++)
+        {
+            view=listView.getAdapter().getView(i,null,null);
+            et=(EditText) view.findViewById(i);
+            al.add(et.getText().toString());
+        }
+        Toast.makeText(getApplicationContext(),al.get(0),Toast.LENGTH_LONG).show();
 
     }
 }
@@ -53,7 +77,7 @@ class MyAdapter extends BaseAdapter {
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         for (int i = 0; i < nor; i++) {
             ListItem listItem = new ListItem();
-            listItem.caption = "Caption" + i;
+            listItem.caption = "Column " + i;
             myItems.add(listItem);
         }
         notifyDataSetChanged();
@@ -64,7 +88,7 @@ class MyAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return position;
+        return myItems.get(position);
     }
 
     public long getItemId(int position) {

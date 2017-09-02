@@ -2,6 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/create"
+        android:background="@color/theme"
+        android:textColor="@color/white"
+        android:onClick="createCol"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
     <ListView
         android:id="@+id/entries"
         android:layout_width="fill_parent"
@@ -9,6 +21,7 @@
         android:descendantFocusability="beforeDescendants">
 
     </ListView>
+
 
 
 </LinearLayout>

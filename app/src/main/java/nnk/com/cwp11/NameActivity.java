@@ -47,6 +47,17 @@ public class NameActivity extends AppCompatActivity
         myAdapter=new MyAdapter(NameActivity.this,n);
         listView.setAdapter(myAdapter);
         //ob=myAdapter.getItem(1);
+    public void createCol(View view)
+    {
+       ArrayList<String> al=new ArrayList<String>();
+        EditText et;
+        for (int i=0;i<listView.getCount();i++)
+        {
+            view=listView.getAdapter().getView(i,null,null);
+            et=(EditText) view.findViewById(i);
+            al.add(et.getText().toString());
+        }
+        Toast.makeText(getApplicationContext(),al.get(0),Toast.LENGTH_LONG).show();
     }
     public void createCol(View view)
     {

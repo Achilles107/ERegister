@@ -29,7 +29,7 @@ public class NameActivity extends AppCompatActivity
     private ListView listView;
     private MyAdapter myAdapter;
     public String str;
-    public Object ob;
+    ArrayList<String> al=new ArrayList<String>();
 
 
     @Override
@@ -47,18 +47,10 @@ public class NameActivity extends AppCompatActivity
         myAdapter=new MyAdapter(NameActivity.this,n);
         listView.setAdapter(myAdapter);
         //ob=myAdapter.getItem(1);
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
- }
+    }
     public void createCol(View view)
     {
-       ArrayList<String> al=new ArrayList<String>();
+
         EditText et;
         for (int i=0;i<listView.getCount();i++)
         {
@@ -66,23 +58,13 @@ public class NameActivity extends AppCompatActivity
             et=(EditText) view.findViewById(i);
             al.add(et.getText().toString());
         }
-        Toast.makeText(getApplicationContext(),al.get(0),Toast.LENGTH_LONG).show();
->>>>>>> 0d68842f553e44e8ff56b16e770d0af4ca2bb666
+        //Toast.makeText(getApplicationContext(),al.get(0),Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(NameActivity.this,BookActivity.class);
+        intent.putStringArrayListExtra("col_names",al);
+        startActivity(intent);
 
     }
-    public void createCol(View view)
-    {
-       ArrayList<String> al=new ArrayList<String>();
-        EditText et;
-        for (int i=0;i<listView.getCount();i++)
-        {
-            view=listView.getAdapter().getView(i,null,null);
-            et=(EditText) view.findViewById(i);
-            al.add(et.getText().toString());
-        }
-        Toast.makeText(getApplicationContext(),al.get(0),Toast.LENGTH_LONG).show();
 
-    }
 }
 class MyAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
